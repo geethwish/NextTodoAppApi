@@ -4,8 +4,8 @@
   "description": "this is REST Api project for a todo app using Mongo DB, Express Js and Node js",
   "main": "server.js",
   "scripts": {
-   "start":"node server.js",
-   "server":"nodemon server.js"
+    "start": "node server.js",
+    "server": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
     "colors": "^1.4.0",
     "dotenv": "^16.0.0",
     "express": "^4.18.0",
+    "express-async-handler": "^1.2.0",
     "mongoose": "^6.3.1",
     "nodemon": "^2.0.15"
   }
