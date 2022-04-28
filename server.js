@@ -2,12 +2,14 @@
 const express = require('express')
 const dotenv = require('dotenv').config();
 const colors = require('colors');
+var cors = require('cors');
 
 // config
 const ConnectDB = require('./config/db');
 
 // routes
 const todoRoutes = require('./routes/todoRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 // middleware
 const { errorHandler } = require('./middleware/errorMiddleware');
@@ -19,7 +21,10 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+app.use(cors());
+
 app.use('/api/todo', todoRoutes);
+app.use('/api/auth', userRoutes);
 
 app.use(errorHandler);
 
