@@ -7,7 +7,7 @@ module.exports = {
 
         const hashPassword = await bcrypt.hash('awesome', salt);
 
-
+        // create a default user
         return db.collection('users').insert({
             name: 'john Smith',
             email: 'hello@awesomecode.geeth',
@@ -17,6 +17,7 @@ module.exports = {
 
     async down(db, client) {
 
+        // undo migration
         return db.collection('users').updateMany({}, { $unset: { quantity: null } });
 
     }

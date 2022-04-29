@@ -7,7 +7,7 @@ var cors = require('cors');
 // config
 const ConnectDB = require('./config/db');
 
-// routes
+// routes import
 const todoRoutes = require('./routes/todoRoutes');
 const userRoutes = require('./routes/userRoutes');
 
@@ -23,9 +23,11 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(cors());
 
+// routes
 app.use('/api/todo', todoRoutes);
 app.use('/api/auth', userRoutes);
 
+// error handlers
 app.use(errorHandler);
 
 app.listen(port, () => console.log(`Server starting on port ${port}`))
