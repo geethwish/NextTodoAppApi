@@ -6,7 +6,17 @@ const User = require('../model/userModel')
 // Get Todos - GET/api/todo - Private
 const getTodos = asyncHandler(async (req, res) => {
 
-    const todos = await Todo.find({ user: req.user.id });
+    let todos;
+    if (req.query.status) {
+
+        todos = await Todo.find({ user: req.user.id, status: req.query.status });
+
+    } else {
+
+        todos = await Todo.find({ user: req.user.id });
+
+    }
+
 
     res.status(200).json(todos)
 
@@ -16,6 +26,8 @@ const getTodos = asyncHandler(async (req, res) => {
 const saveTodo = asyncHandler(async (req, res) => {
 
     const { title, status } = req.body
+
+    console.log(req.body);
 
     if (!title) {
 
@@ -45,7 +57,7 @@ const updateTodo = asyncHandler(async (req, res) => {
         throw new Error("Todo not found")
     }
 
-    const user = await User.findByById(req.user.id);
+    const user = await User.findById(req.user.id);
 
     // check for user
     if (!user) {
@@ -84,7 +96,7 @@ const deleteTodo = asyncHandler(async (req, res) => {
         throw new Error("Todo not found")
     }
 
-    const user = await User.findByById(req.user.id);
+    const user = await User.findById(req.user.id);
 
     // check for user
     if (!user) {
