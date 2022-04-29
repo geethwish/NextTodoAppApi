@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "migrateStart": "migrate-mongo up",
+    "migrateRevert": "migrate-mongo down"
   },
   "repository": {
     "type": "git",
@@ -29,6 +31,7 @@
     "express": "^4.18.0",
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
+    "migrate-mongo": "^9.0.0",
     "mongoose": "^6.3.1",
     "nodemon": "^2.0.15"
   }
